@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     public TextView departureDate;
     public DatePickerDialog.OnDateSetListener dateSetListener;
@@ -34,21 +34,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                CalendarPicker calendarPicker = new CalendarPicker();
+                CalendarPicker calendarPicker = new CalendarPicker(((MainActivity)view.getContext()));
                 calendarPicker.setDate(view.getContext());
-
             }
         });
+    }
 
-        dateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int day, int month , int year) {
-                month++;
-                Log.d(TAG, getString(R.string.ondatesetdate)+ day + "/" + month + "/" + year );
-                String departureDateSet = day + "/" + month + "/" + year;
-                departureDate.setText("Departure Date: " + departureDateSet);
-
-            }
-        };
+    @Override
+    public void onDateSet(DatePicker datePicker, int day, int month, int year) {
+        String date = day + "/" + month +"/" + year;
+        departureDate.setText("Departure Date: " + date);
     }
 }
