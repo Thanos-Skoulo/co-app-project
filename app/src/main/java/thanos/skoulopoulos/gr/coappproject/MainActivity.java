@@ -1,11 +1,13 @@
 package thanos.skoulopoulos.gr.coappproject;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TextView;
@@ -14,8 +16,9 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView departureDate;
-    private DatePickerDialog.OnDateSetListener dateSetListener;
+    public TextView departureDate;
+    public DatePickerDialog.OnDateSetListener dateSetListener;
+    public static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,15 +33,22 @@ public class MainActivity extends AppCompatActivity {
         departureDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar calendarDeparture = Calendar.getInstance();
-                int year =calendarDeparture.get(Calendar.YEAR);
-                int mounth = calendarDeparture.get(Calendar.MONTH);
-                int day = calendarDeparture.get(Calendar.DAY_OF_MONTH);
 
-                DatePickerDialog datePickerDialog =new DatePickerDialog(MainActivity.this, R.style.Theme_AppCompat_Light_Dialog,dateSetListener,year,mounth,day);
-                datePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datePickerDialog.show();
+                CalendarPicker calendarPicker = new CalendarPicker();
+                calendarPicker.setDate(view.getContext());
+
             }
         });
+
+        dateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int day, int month , int year) {
+                month++;
+                Log.d(TAG, getString(R.string.ondatesetdate)+ day + "/" + month + "/" + year );
+                String departureDateSet = day + "/" + month + "/" + year;
+                departureDate.setText("Departure Date: " + departureDateSet);
+
+            }
+        };
     }
 }
