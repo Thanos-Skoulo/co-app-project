@@ -17,8 +17,7 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
     public TextView departureDate;
-    public DatePickerDialog.OnDateSetListener dateSetListener;
-    public static final String TAG = "MainActivity";
+    public TextView arrivalDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 calendarPicker.setDate(view.getContext());
             }
         });
+
+
     }
 
     @Override
@@ -45,4 +46,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         String date = day + "/" + month +"/" + year;
         departureDate.setText("Departure Date: " + date);
     }
+
+
 }

@@ -4,6 +4,6 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="date_of_departure">Date of Departure</string>
-    <string name="ticket_caclulator">Ticket Caclulator</string>
+    <string name="ticket_price">Tιμολογηση Πτησης</string>
     <string name="ondatesetdate">onDateSet:date</string>
 </resources>
