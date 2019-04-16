@@ -2,6 +2,7 @@ package thanos.skoulopoulos.gr.coappproject;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.ActionBar;
@@ -54,6 +55,15 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         numberOfChildren = findViewById(R.id.et_number_of_children);
         numberOfAdults = findViewById(R.id.et_number_of_adults);
         numberOfElders = findViewById(R.id.et_number_of_elders);
+        Button buttonCalculation = findViewById(R.id.button_calculation);
+
+        buttonCalculation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,CheckoutActivity.class);
+                startActivity(intent);
+            }
+        });
 
         departureDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,18 +122,24 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         if(i==0){
             tvChildren.setVisibility(view.GONE);
             numberOfChildren.setVisibility(view.GONE);
+            tvAdults.setVisibility(view.GONE);
+            numberOfAdults.setVisibility(view.GONE);
+            tvElders.setVisibility(view.GONE);
+            numberOfElders.setVisibility(view.GONE);
+        }else if(i==1){
+            tvChildren.setVisibility(view.GONE);
+            numberOfChildren.setVisibility(view.GONE);
             tvAdults.setVisibility(view.VISIBLE);
             numberOfAdults.setVisibility(view.VISIBLE);
             tvElders.setVisibility(view.VISIBLE);
             numberOfElders.setVisibility(view.VISIBLE);
-        }else if(i==1){
+        }else{
             tvChildren.setVisibility(view.VISIBLE);
             numberOfChildren.setVisibility(view.VISIBLE);
             tvAdults.setVisibility(view.VISIBLE);
             numberOfAdults.setVisibility(view.VISIBLE);
             tvElders.setVisibility(view.VISIBLE);
             numberOfElders.setVisibility(view.VISIBLE);
-        }else{
 
 
         }
