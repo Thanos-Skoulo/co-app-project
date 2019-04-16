@@ -6,4 +6,12 @@
     <string name="date_of_departure">Date of Departure</string>
     <string name="ticket_price">Tιμολογηση Πτησης</string>
     <string name="ondatesetdate">onDateSet:date</string>
+
+    <string-array name="travel_as">
+        <item>individual</item>
+        <item>family</item>
+        <item>group</item>
+    </string-array>
+    
+
 </resources>
